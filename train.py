@@ -76,7 +76,8 @@ if __name__ == "__main__":
 
             if early_stopping.check(np.mean(valid_costs)):
                 break
-
-        print("save model...")
-        saver = tf.train.Saver()
-        saver.save(sess, hp.SAVED_PATH, global_step=epoch)
+                
+            ####在一个epoch完成后保存一次，防止意外情况出现
+            print("save model...")
+            saver = tf.train.Saver()
+            saver.save(sess, hp.SAVED_PATH, global_step=epoch)
